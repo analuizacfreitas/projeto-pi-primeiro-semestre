@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+</head>
+<body>
+        <b>Digite valor médio mensal gasto em indenizações: </b><input id="num1" placeholder="Insira gastos em R$" style=" width: 200px;"><br><br>
+		 <button onclick="calcular()">Calcular</button> <button onclick="limpar()">Limpar</button>
+		 <br>
+         <br>
+         <div id ="resposta">
+		</div>
+        <br>
+        <div style="width: 60%;">
+         <div style=" text-align: center;" id="cor1"></div>
+         <div style=" float: left; text-align: center;" id="cor2"></div>
+         <div style=" float: left; text-align: center; " id="cor3"></div>
+        </div>
+</body>
+</html>
+<script>
+
+   function calcular(){
+    var n1 = Number(num1.value);
+    var resultado = n1 * 6;
+    var economia = resultado * 0.36;
+    var diferenca = resultado - economia;
+    var barraDiferenca = (100 * diferenca) / resultado;
+    var barraEconomia = (100 * economia) / resultado;
+
+    //var result = result.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+    //var eco = eco.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+    //var resp = resp.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+
+    resposta.innerHTML = (` Isso representa um gasto médio semetral de: <b>R$ ${resultado}</b>.<br>
+    Com a nossa solução, seus gastos serão de: <b>R$${diferenca}</b>.<br>
+    Uma economia de: <b>R$ ${economia}</b>.`);
+    cor1.style.width = (`100%`);
+    cor1.style.height = "30px"; 
+    cor1.style.backgroundColor = "#D3D3D3";
+    cor1.innerHTML = (`<b style="color:#363636">(R$ ${resultado})</b> `);
+    cor2.style.width = (`${barraDiferenca}%`);
+    cor2.style.height = "30px"; 
+    cor2.style.backgroundColor = "Tomato";
+    cor2.innerHTML = (` <b style="color:#363636">(R$ ${diferenca}) </b>`);
+    cor3.style.width = (`${barraEconomia}%`);
+    cor3.style.height = "30px";
+    cor3.style.backgroundColor = "#3CB371";
+    cor3.innerHTML = (` <b style="color:#363636">(R$ ${economia}) </b>`);
+   }
+
+   function limpar(){
+    num1.value = "";
+    resposta.innerHTML = "";
+    cor1.innerHTML = "";
+    cor2.innerHTML = "";
+    cor3.innerHTML = "";
+    cor1.style.width = "";
+    cor1.style.height = "";
+    cor1.style.backgroundColor = "";
+    cor2.style.width = "";
+    cor2.style.height = "";
+    cor2.style.backgroundColor = "";
+    cor3.style.width = "";
+    cor3.style.height = "";
+    cor3.style.backgroundColor = "";
+   }
+
+</script>
